@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="Placeholder image: Photo: air freight">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a3d99"/><stop offset="1" stop-color="#030b26"/></linearGradient>
+<radialGradient id="r" cx=".75" cy=".15" r=".7"><stop offset="0" stop-color="#ff9a52" stop-opacity=".45"/><stop offset="1" stop-color="#ff9a52" stop-opacity="0"/></radialGradient>
+<pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern></defs>
+<rect width="900" height="640" fill="url(#g)"/><rect width="900" height="640" fill="url(#p)"/><rect width="900" height="640" fill="url(#r)"/>
+<ellipse cx="170" cy="150" rx="90" ry="22" fill="#fff" opacity=".12"/><ellipse cx="720" cy="420" rx="110" ry="26" fill="#fff" opacity=".1"/>
+<g transform="translate(120 200) rotate(-8 330 120)"><path d="M0 120Q0 70 80 70H540Q680 70 700 120Q680 170 540 170H80Q0 170 0 120Z" fill="#fff"/><path d="M200 112L360 112L300 -30L240 -30Z" fill="#e9eefb"/><path d="M200 128L360 128L300 270L240 270Z" fill="#cdd9f2"/><path d="M30 78L0 -10H70L120 78Z" fill="#ff6a0a"/><g fill="#0a3d99"><circle cx="470" cy="112" r="9"/><circle cx="505" cy="112" r="9"/><circle cx="540" cy="112" r="9"/><circle cx="575" cy="112" r="9"/></g></g>
+<g transform="translate(24 616)"><rect y="-30" width="195" height="30" rx="15" fill="#000" fill-opacity=".38"/><circle cx="16" cy="-15" r="5" fill="#ff9a52"/><text x="30" y="-10" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fff" fill-opacity=".92">Photo: air freight</text></g>
+<text x="876" y="626" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="12" fill="#fff" fill-opacity=".55">Replace with a photo · 900×640</text>
+</svg>

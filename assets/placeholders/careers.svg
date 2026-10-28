@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" width="1600" height="640" role="img" aria-label="Placeholder image: Photo: our team and fleet">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#030b26"/><stop offset="1" stop-color="#0a3d99"/></linearGradient>
+<radialGradient id="r" cx=".75" cy=".15" r=".7"><stop offset="0" stop-color="#ff6a0a" stop-opacity=".45"/><stop offset="1" stop-color="#ff6a0a" stop-opacity="0"/></radialGradient>
+<pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern></defs>
+<rect width="1600" height="640" fill="url(#g)"/><rect width="1600" height="640" fill="url(#p)"/><rect width="1600" height="640" fill="url(#r)"/>
+<g transform="translate(490 200)"><g fill="#fff" opacity=".95"><circle cx="90" cy="60" r="38"/><path d="M20 260q0-130 70-130t70 130z"/><circle cx="300" cy="40" r="42"/><path d="M220 260q0-150 80-150t80 150z"/><circle cx="510" cy="60" r="38"/><path d="M440 260q0-130 70-130t70 130z"/></g><path d="M0 270H620" stroke="#ff6a0a" stroke-width="6"/></g>
+<g transform="translate(24 616)"><rect y="-30" width="254" height="30" rx="15" fill="#000" fill-opacity=".38"/><circle cx="16" cy="-15" r="5" fill="#ff6a0a"/><text x="30" y="-10" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fff" fill-opacity=".92">Photo: our team and fleet</text></g>
+<text x="1576" y="626" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="12" fill="#fff" fill-opacity=".55">Replace with a photo · 1600×640</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="Placeholder image: Photo: trucks on the road">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071a4d"/><stop offset="1" stop-color="#0a2a73"/></linearGradient>
+<radialGradient id="r" cx=".75" cy=".15" r=".7"><stop offset="0" stop-color="#ff6a0a" stop-opacity=".45"/><stop offset="1" stop-color="#ff6a0a" stop-opacity="0"/></radialGradient>
+<pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern></defs>
+<rect width="900" height="640" fill="url(#g)"/><rect width="900" height="640" fill="url(#p)"/><rect width="900" height="640" fill="url(#r)"/>
+<rect y="500" width="900" height="140" fill="#05163f" opacity=".7"/><g stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-dasharray="40 30"><line x1="0" y1="575" x2="900" y2="575"/></g>
+<g transform="translate(120 230)"><rect x="0" y="0" width="420" height="220" rx="12" fill="#ff6a0a"/><g stroke="#000" stroke-opacity=".16" stroke-width="4"><line x1="50" y1="10" x2="50" y2="210"/><line x1="100" y1="10" x2="100" y2="210"/><line x1="150" y1="10" x2="150" y2="210"/><line x1="200" y1="10" x2="200" y2="210"/><line x1="250" y1="10" x2="250" y2="210"/><line x1="300" y1="10" x2="300" y2="210"/><line x1="350" y1="10" x2="350" y2="210"/></g>
+<rect y="220" width="420" height="24" fill="#071a4d"/><path d="M440 60h120q40 0 62 50l32 70v64H440z" fill="#fff"/><path d="M468 82h92q22 0 38 32l12 30H468z" fill="#0a3d99"/><rect x="440" y="244" width="216" height="16" fill="#071a4d"/>
+<g fill="#071a4d" stroke="#fff" stroke-width="8"><circle cx="110" cy="262" r="34"/><circle cx="220" cy="262" r="34"/><circle cx="560" cy="262" r="34"/></g></g>
+<g transform="translate(24 616)"><rect y="-30" width="254" height="30" rx="15" fill="#000" fill-opacity=".38"/><circle cx="16" cy="-15" r="5" fill="#ff6a0a"/><text x="30" y="-10" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fff" fill-opacity=".92">Photo: trucks on the road</text></g>
+<text x="876" y="626" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="12" fill="#fff" fill-opacity=".55">Replace with a photo · 900×640</text>
+</svg>

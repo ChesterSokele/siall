@@ -1,0 +1,12 @@
+{
+  "name": "siall-kit-viewer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "3D kit designer for SI All Logistics and Trading CC (bundled with esbuild into ../assets/kit-viewer.js)",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "dependencies": { "three": "^0.160.0" },
+  "devDependencies": { "esbuild": "^0.21.5", "@gltf-transform/core": "^3.10.1", "@gltf-transform/functions": "^3.10.1", "@gltf-transform/extensions": "^3.10.1", "meshoptimizer": "^0.20.0" }
+}

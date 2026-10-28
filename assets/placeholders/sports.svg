@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="Placeholder image: Photo: football kit">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a3d99"/><stop offset="1" stop-color="#030b26"/></linearGradient>
+<radialGradient id="r" cx=".75" cy=".15" r=".7"><stop offset="0" stop-color="#ff6a0a" stop-opacity=".45"/><stop offset="1" stop-color="#ff6a0a" stop-opacity="0"/></radialGradient>
+<pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern></defs>
+<rect width="900" height="640" fill="url(#g)"/><rect width="900" height="640" fill="url(#p)"/><rect width="900" height="640" fill="url(#r)"/>
+<g transform="translate(250 70)"><path d="M130 20L180 36C196 62 244 62 260 36L310 20L400 100L350 150L310 124V430H80V124L40 150L-10 100Z" fill="#fff"/><path d="M180 36C196 62 244 62 260 36" fill="none" stroke="#ff6a0a" stroke-width="12" stroke-linecap="round"/><path d="M-10 100L40 150L58 134L8 80ZM400 100L350 150L332 134L382 80Z" fill="#ff6a0a"/><rect x="80" y="344" width="230" height="16" fill="#ff6a0a"/><text x="195" y="270" text-anchor="middle" font-family="Sora,Arial Black,sans-serif" font-weight="800" font-size="130" fill="#0a3d99">10</text></g>
+<g transform="translate(24 616)"><rect y="-30" width="204" height="30" rx="15" fill="#000" fill-opacity=".38"/><circle cx="16" cy="-15" r="5" fill="#ff6a0a"/><text x="30" y="-10" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fff" fill-opacity=".92">Photo: football kit</text></g>
+<text x="876" y="626" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="12" fill="#fff" fill-opacity=".55">Replace with a photo · 900×640</text>
+</svg>
