@@ -523,3 +523,23 @@ input, select, textarea { font-size: 16px; } /* stops iOS zooming into fields */
 .form .row > *, .form .fields > * { min-width: 0; }
 input, select, textarea { max-width: 100%; min-width: 0; }
 @media (max-width: 560px) { .form .row { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- SEO pages: FAQ, guides, footer links ---------- */
+.faq { display: grid; gap: 12px; max-width: 880px; }
+.faq-item { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 0 24px; }
+.faq-item summary { cursor: pointer; list-style: none; padding: 20px 28px 20px 0; font-weight: 600; font-family: Sora, Inter, sans-serif; position: relative; min-height: 48px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--orange); transition: transform .25s; }
+.faq-item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq-item p { margin: 0 0 22px; color: var(--muted, #44527a); }
+.prose { max-width: 820px; }
+.prose h2 { margin: 44px 0 12px; font-size: clamp(1.4rem, 3.2vw, 1.9rem); }
+.prose p, .prose li { line-height: 1.7; }
+.prose a { color: var(--blue, #0a3d99); text-decoration: underline; text-underline-offset: 3px; }
+.prose .answer { font-size: 1.1rem; padding: 22px 24px; border-left: 5px solid var(--orange); background: #f3f7ff; border-radius: 0 16px 16px 0; }
+.grid3.tight { margin-top: 18px; }
+.seo-more { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-weight: 600; }
+.feature p a { color: var(--blue, #0a3d99); font-weight: 600; text-decoration: none; }
+.footer-seo { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; padding: 22px 0; margin-top: 8px; border-top: 1px solid rgba(255,255,255,.12); font-size: .88rem; color: #b4c4e8; }
+.footer-seo strong { color: #fff; }
+.footer-seo a { color: #b4c4e8; text-decoration: none; padding: 4px 0; } .footer-seo a:hover { color: #fff; }
