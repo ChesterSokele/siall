@@ -230,7 +230,43 @@
   $("#btn-spin").addEventListener("click", function () { if (window.Kit3D && ready) { Kit3D.setSpin(!Kit3D.isSpinning()); syncSpin(); } });
   $("#stage").addEventListener("pointerdown", function () { setTimeout(syncSpin, 50); });
   $("#btn-reset").addEventListener("click", function () { Object.assign(state, DEFAULT, { customer: null }); logoData = null; refresh(); renderCats(); toast("Reset to Night Shift"); });
-  $("#btn-save").addEventListener("click", function () { toast(lsSet("siall-kit", JSON.stringify(pack())) ? "Look saved on this device" : "Could not save"); });
+  /* Save look: keep the look on this device and download a PNG picture of the kit */
+  function download(blob, name) {
+    var url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = name; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+  function composeImage(glBlob, cb) {
+    var img = new Image(), u = URL.createObjectURL(glBlob);
+    img.onload = function () {
+      URL.revokeObjectURL(u);
+      var w = img.naturalWidth, h = img.naturalHeight, pad = Math.round(h * 0.12);
+      var c = document.createElement("canvas"); c.width = w; c.height = h + pad;
+      var x = c.getContext("2d"), g = x.createLinearGradient(0, 0, w, h + pad);
+      g.addColorStop(0, "#050818"); g.addColorStop(1, "#0a2a6e");
+      x.fillStyle = g; x.fillRect(0, 0, c.width, c.height);
+      x.drawImage(img, 0, 0);
+      var fs = Math.round(pad * 0.34);
+      x.fillStyle = "#fff"; x.textBaseline = "middle"; x.font = "800 " + fs + "px Sora, Inter, Arial, sans-serif";
+      x.textAlign = "left"; x.fillText((state.name || "My kit").toUpperCase(), Math.round(w * 0.04), h + pad / 2);
+      x.fillStyle = "#ff6a0a"; x.textAlign = "right"; x.fillText(state.number ? "#" + state.number : "SI ALL Kit Studio", Math.round(w * 0.96), h + pad / 2);
+      c.toBlob(function (b) { cb(b || glBlob); }, "image/png");
+    };
+    img.onerror = function () { URL.revokeObjectURL(u); cb(glBlob); };
+    img.src = u;
+  }
+  $("#btn-save").addEventListener("click", function () {
+    lsSet("siall-kit", JSON.stringify(pack()));
+    if (!(window.Kit3D && ready && Kit3D.snapshot)) { toast("3D preview not ready yet"); return; }
+    Kit3D.snapshot(function (blob) {
+      if (!blob) { toast("Could not create the image"); return; }
+      composeImage(blob, function (out) {
+        var nm = (state.name || "kit").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "kit";
+        download(out, "siall-" + nm + (state.number ? "-" + state.number : "") + ".png");
+        toast("Look saved as an image");
+      });
+    });
+  });
   $("#btn-share").addEventListener("click", function () {
     var url = location.href.split("#")[0] + "#k=" + btoa(unescape(encodeURIComponent(JSON.stringify(pack()))));
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { toast("Link copied"); }, function () { prompt("Copy this link", url); });

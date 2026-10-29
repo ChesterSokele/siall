@@ -309,7 +309,7 @@
         btn.disabled = false; btn.innerHTML = "Submit application"; prog.hidden = true;
         showErr(msg);
       }
-      xhr.onerror = function () { fail("We could not reach the server. Check your connection and try again, or email your CV to <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); };
+      xhr.onerror = function () { fail("We could not reach the server. Check your connection and try again, or email your CV to <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); };
       xhr.onload = function () {
         var res = null; try { res = JSON.parse(xhr.responseText); } catch (x) { /* not JSON */ }
         if (xhr.status === 200 && res && res.ok) {
@@ -318,8 +318,8 @@
           okBox.hidden = false; form.classList.add("sent"); form.reset(); files = { cv: null, docs: [] }; render();
           form.scrollIntoView({ behavior: "smooth", block: "start" });
         } else if (res && res.message) { fail(res.message); }
-        else if ([0, 403, 404, 405, 501].indexOf(xhr.status) >= 0) { fail("The online form is not available on this server yet. Please email your CV and documents to <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); }
-        else { fail("Something went wrong (" + xhr.status + "). Please try again or email <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); }
+        else if ([0, 403, 404, 405, 501].indexOf(xhr.status) >= 0) { fail("The online form is not available on this server yet. Please email your CV and documents to <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); }
+        else { fail("Something went wrong (" + xhr.status + "). Please try again or email <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); }
       };
       xhr.send(fd);
     });
@@ -328,7 +328,7 @@
   // ---- Contact form (mailto until a backend exists) ----
   var form = $("#contact-form");
   if (!form) return;
-  var TO = "info@alllogistics.com.na", note = $(".form-note", form);
+  var TO = "info@sialllogistics.com", note = $(".form-note", form);
   var qs = new URLSearchParams(window.location.search);
   if (qs.get("service")) {
     for (var i = 0; i < form.service.options.length; i++) {

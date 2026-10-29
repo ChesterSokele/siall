@@ -207,6 +207,8 @@ Kit3D.init = function (stage, state, opts) {
     if (scene.userData.rings) scene.userData.rings[1].rotation.z = now * 0.0003;
     controls.update(); renderer.render(scene, camera);
   })(performance.now());
+  // render a fresh frame and hand back the pixels (the GL buffer is only readable straight after a render)
+  Kit3D.snapshot = (cb) => { controls.update(); renderer.render(scene, camera); renderer.domElement.toBlob(cb, 'image/png'); };
   Kit3D.ready = true;
   return true;
 };
