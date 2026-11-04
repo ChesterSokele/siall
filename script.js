@@ -210,7 +210,7 @@
   (function () {
     var form = document.getElementById("apply-form");
     if (!form) return;
-    var MAX = 5 * 1024 * 1024, MAX_DOCS = 5, TOTAL = 18 * 1024 * 1024;
+    var MAX = 5 * 1024 * 1024, MAX_DOCS = 5, TOTAL = 8 * 1024 * 1024;
     var OK_CV = ["pdf", "doc", "docx"], OK_DOC = ["pdf", "doc", "docx", "jpg", "jpeg", "png"];
     var files = { cv: null, docs: [] };
     var okBox = document.getElementById("apply-ok"), errBox = document.getElementById("apply-err");
@@ -289,7 +289,7 @@
       if (!files.cv) return "Please attach your CV.";
       if (!form.elements.consent.checked) return "Please tick the box to confirm that we may keep your details.";
       var total = (files.cv ? files.cv.size : 0) + files.docs.reduce(function (s, f) { return s + f.size; }, 0);
-      if (total > TOTAL) return "The files are too large together (" + size(total) + "). Please keep the total under 18 MB.";
+      if (total > TOTAL) return "The files are too large together (" + size(total) + "). Please keep the total under 8 MB.";
       return "";
     }
 
@@ -299,36 +299,35 @@
       var fd = new FormData(form);
       fd.delete("cv"); fd.delete("docs[]"); fd.delete("docs");
       fd.append("cv", files.cv, files.cv.name);
-      files.docs.forEach(function (f) { fd.append("docs[]", f, f.name); });
+      files.docs.forEach(function (f) { fd.append("docs", f, f.name); });
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", form.getAttribute("action"));
-      xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); xhr.setRequestHeader("Accept", "application/json");
+      xhr.open("POST", "/");
       btn.disabled = true; btn.textContent = "Sending..."; prog.hidden = false; bar.style.width = "0";
       xhr.upload.onprogress = function (ev) { if (ev.lengthComputable) bar.style.width = Math.round(ev.loaded / ev.total * 100) + "%"; };
       function fail(msg) {
         btn.disabled = false; btn.innerHTML = "Submit application"; prog.hidden = true;
         showErr(msg);
       }
-      xhr.onerror = function () { fail("We could not reach the server. Check your connection and try again, or email your CV to <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); };
+      xhr.onerror = function () { fail("We could not reach the server. Check your connection and try again, or email your CV to <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); };
       xhr.onload = function () {
         var res = null; try { res = JSON.parse(xhr.responseText); } catch (x) { /* not JSON */ }
-        if (xhr.status === 200 && res && res.ok) {
+        if (xhr.status >= 200 && xhr.status < 400) {
           btn.disabled = false; btn.innerHTML = "Submit application"; prog.hidden = true; bar.style.width = "0";
-          okBox.innerHTML = "<strong>Application received</strong>" + (res.message || "Thank you.") + (res.ref ? " Your reference is <b>" + res.ref + "</b>." : "") + " We will be in touch if your profile matches a role.";
+          okBox.innerHTML = "<strong>Application received</strong>" + "Thank you." + " We will be in touch if your profile matches a role.";
           okBox.hidden = false; form.classList.add("sent"); form.reset(); files = { cv: null, docs: [] }; render();
           form.scrollIntoView({ behavior: "smooth", block: "start" });
         } else if (res && res.message) { fail(res.message); }
-        else if ([0, 403, 404, 405, 501].indexOf(xhr.status) >= 0) { fail("The online form is not available on this server yet. Please email your CV and documents to <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); }
-        else { fail("Something went wrong (" + xhr.status + "). Please try again or email <a href=\"mailto:info@sialllogistics.com?subject=Job%20application\">info@sialllogistics.com</a>."); }
+        else if ([0, 403, 404, 405, 501].indexOf(xhr.status) >= 0) { fail("The online form is not available on this server yet. Please email your CV and documents to <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); }
+        else { fail("Something went wrong (" + xhr.status + "). Please try again or email <a href=\"mailto:info@alllogistics.com.na?subject=Job%20application\">info@alllogistics.com.na</a>."); }
       };
       xhr.send(fd);
     });
   })();
 
-  // ---- Contact form (mailto until a backend exists) ----
+  // ---- Contact form (Netlify Forms) ----
   var form = $("#contact-form");
   if (!form) return;
-  var TO = "info@sialllogistics.com", note = $(".form-note", form);
+  var TO = "info@alllogistics.com.na", note = $(".form-note", form);
   var qs = new URLSearchParams(window.location.search);
   if (qs.get("service")) {
     for (var i = 0; i < form.service.options.length; i++) {
@@ -346,9 +345,12 @@
       if (bad) ok = false;
     });
     if (!ok) { note.textContent = "Please complete the highlighted fields."; return; }
-    var body = ["Name: " + data.get("name"), "Phone: " + (data.get("phone") || "-"), "Email: " + data.get("email"),
-      "Service: " + data.get("service"), "", data.get("message")].join("\n");
-    window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Website enquiry: " + data.get("service")) + "&body=" + encodeURIComponent(body);
-    note.textContent = "Opening your email app. Thank you!";
+    var btn = form.querySelector("button[type=submit]"), label = btn.innerHTML;
+    btn.disabled = true; btn.textContent = "Sending..."; note.textContent = "";
+    var body = new URLSearchParams(data).toString();
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); note.textContent = "Thank you. Your enquiry has been sent and we will reply soon."; })
+      .catch(function () { note.innerHTML = "Sorry, that did not send. Please try again or email <a href=\"mailto:" + TO + "\">" + TO + "</a>."; })
+      .then(function () { btn.disabled = false; btn.innerHTML = label; });
   });
 })();
