@@ -10,8 +10,8 @@
 declare(strict_types=1);
 
 // ---------- settings ----------
-const HR_EMAIL    = 'info@alllogistics.com.na';        // where applications are delivered
-const FROM_EMAIL  = 'no-reply@alllogistics.com.na';    // use an address on your own domain so mail is not marked as spam
+const HR_EMAIL    = 'info@sialllogistics.com';        // where applications are delivered
+const FROM_EMAIL  = 'no-reply@sialllogistics.com';    // use an address on your own domain so mail is not marked as spam
 const SITE_NAME   = 'SI All Logistics and Trading CC';
 const MAX_FILE    = 5 * 1024 * 1024;                   // per file
 const MAX_TOTAL   = 18 * 1024 * 1024;                  // all attachments together
